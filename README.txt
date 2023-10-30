@@ -52,6 +52,33 @@ After that deleted the all Class1.cs file from all three project.
 
 move the models folder into the model project
 
+now we will change the error.cshtml fiel and edit the line in the @model and we will give the project reference add we will add the dataAccess and model and we will modify 
+the errorviewmodel.cs file with the viewmodel
+
+in the startup.cs added the proper link for data new location.
+
+resolved all the red lines from every where and now we will try to bulid the project and runned the project.
+
+in the utitly project we will add the SD.cs file and give the remaining project reference for the Utility with main project. in the dataAccess prject we will give the reference to the remaining prject except the main project
+
+Created the new Area Customer in the Area Folder change the route in the startup.cs file.
+
+move the homecontroller.cs from controllers to area>Customer>Controller and also deleted the daata and models folder in the Customer folder.
+
+in the Home Controller.cs added the [Area("customer")]
+
+Also Chnaged the Home Folder from the Main to in the Customer Folder and also chaned the namspace.
+
+and in the view added the the viewtart file and viewimport file to make it look as bfore otherwise it look just as sir showned in the picture :(
+
+chaged the path of the_viewstart.cshtml file 
+
+now runned the application again and hurryyyyyyy it running as it supposed to look like..... happyyyyyyy....y..y.y..
+
+Now we will add a new Area named the area.....named Admin...added similar view files as the Customer and remove the data and models folder 
+
+
+
 
 
 
