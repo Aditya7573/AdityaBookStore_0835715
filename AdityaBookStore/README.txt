@@ -311,3 +311,204 @@ namespace AdityaBooks.DataAccess.Repository
 
 Now Time is : 0600 And we willpush to Git Hub with This Readme Because i dont wanna lose another 1%:(
 
+
+ITS 0648 NOW AND WE COMPLETED THE  2.2 mIGRATION AND HWAT SHOULD i tell it was tragic history 
+how i idid it UnitOfwork and I unit and StartUp.cs error last one was really tricky to find out but anyways aleasat start from begining we did the 2.2.5 till everything was
+good life of good times.....
+
+We Created Two New Class Clases ISP_Call.cs And Sp_Call.cs
+Add the content in with my typing all the code with comments in them 
+
+here is theiSP_Call.cs
+
+namespace AdityaBooks.DataAccess.Repository.IRepository
+{
+    public interface ISP_Call : IDisposable
+    {
+        // e.g first coloumn of first row in the result set 
+        T Single<T>(string procedurename, DynamicParameters param = null);
+        // excecute something to the data bt not retrieeve anything
+        void Execute(string procedurename, DynamicParameters param = null);
+        // reterive the complete row or record 
+        T OneRecord<T>(string procedurename, DynamicParameters param = null);
+        // get all the rows
+        IEnumerable<T> List<T>(string procedurename, DynamicParameters param = null);
+        // Stored Proccedure that reture two tables 
+        Tuple<IEnumerable<T1>, IEnumerable<T2>> List<T1, T2>(string procedurename, DynamicParameters param = null);
+    }
+}
+
+ mann Dapper Using System was something new 
+
+
+Now in the Resporatiory>Sp_Call.cs Created 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using AdityaBooks.DataAccess.Repository.IRepository;
+using AdityaBookStore.DataAccess.Data;
+using Dapper;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+
+namespace AdityaBooks.DataAccess.Repository
+{
+    public class SP_Call : ISP_Call
+    {
+        private readonly ApplicationDbContext _db;
+        private static string ConnectionString = "";
+
+        public SP_Call(ApplicationDbContext db)
+        {
+            _db = db;
+            ConnectionString = db.Database.GetDbConnection().ConnectionString;
+        }
+
+        public void Dispose()
+        {
+            _db.Dispose();
+        }
+
+        public void Execute(string procedureName, DynamicParameters param = null)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(ConnectionString))
+            {
+                sqlCon.Open();
+                sqlCon.Execute(procedureName, param, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<T> List<T>(string procedureName, DynamicParameters param = null)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(ConnectionString))
+            {
+                sqlCon.Open();
+                return sqlCon.Query<T>(procedureName, param, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
+        public Tuple<IEnumerable<T1>, IEnumerable<T2>> List<T1, T2>(string procedureName, DynamicParameters param = null)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(ConnectionString))
+            {
+                sqlCon.Open();
+                var result = SqlMapper.QueryMultiple(sqlCon, procedureName, param, commandType: System.Data.CommandType.StoredProcedure);
+                var item1 = result.Read<T1>().ToList();
+                var item2 = result.Read<T2>().ToList();
+
+
+                if (item1 != null && item2 != null)
+                {
+                    return new Tuple<IEnumerable<T1>, IEnumerable<T2>>(item1, item2);
+                }
+            }
+
+            return new Tuple<IEnumerable<T1>, IEnumerable<T2>>(new List<T1>(), new List<T2>());
+        }
+
+        public T OneRecord<T>(string procedureName, DynamicParameters param = null)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(ConnectionString))
+            {
+                sqlCon.Open();
+                var value = sqlCon.Query<T>(procedureName, param, commandType: System.Data.CommandType.StoredProcedure);
+                return (T)Convert.ChangeType(value.FirstOrDefault(), typeof(T));
+            }
+        }
+
+        public T Single<T>(string procedureName, DynamicParameters param = null)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(ConnectionString))
+            {
+                sqlCon.Open();
+                return (T)Convert.ChangeType(sqlCon.ExecuteScalar<T>(procedureName, param, commandType: System.Data.CommandType.StoredProcedure), typeof(T));
+            }
+        }
+    }
+}
+
+
+This thing take the longest time to write mannnnnnn
+
+After that we created new Interface IUnitOFWork.cs in Irepo
+
+Here is code of the IuNit...
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AdityaBooks.DataAccess.Repository.IRepository
+{
+    interface IUnitOfWork : IDisposable
+    {
+        ICategoryRepository Category { get; }
+        ISP_Call SP_Call { get; }
+
+    }
+}
+
+
+Simple 
+
+After that we added new class of UnitOF work in the Repository Folder and now i got my Worst time 
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using AdityaBooks.DataAccess.Repository.IRepository;
+using AdityaBookStore.DataAccess.Data;
+using System.Linq;
+
+
+
+namespace AdityaBooks.DataAccess.Repository
+{
+    public class UnitOfWork : IUnitOfWork
+    {
+        private readonly ApplicationDbContext _db;
+
+        public UnitOfWork(ApplicationDbContext db)
+        {
+            _db = db;
+            Category = new CategoryRepository(_db);
+
+            SP_Call = new SP_Call(_db);
+        }
+
+        public ICategoryRepository Category { get; private set; }
+
+        public ISP_Call SP_Call { get; private set; }
+
+        public void Dispose()
+        {
+            _db.Dispose();
+        }
+
+        public void Save()
+        {
+            _db.SaveChanges();
+        }
+    }
+}  here is my code but instead ofthe   public class UnitOfWork : IUnitOfWork i did  public class UnitOfWork  because of which faced error number one then in startup.cs i just have to
+add one line i thought it will be easy but no i added that line :     services.AddScoped<IUnitOfWork, UnitOfWork>(); 
+
+Severity	Code	Description	Project	File	Line	Suppression State
+Error	CS0311	The type 'AdityaBooks.DataAccess.Repository.UnitOfWork' cannot be used as type parameter 
+'TImplementation' in the generic type or method 'ServiceCollectionServiceExtensions.AddScoped<TService,
+TImplementation>(IServiceCollection)'. There is no implicit reference conversion from 
+'AdityaBooks.DataAccess.Repository.UnitOfWork' to 'Abp.Domain.Uow.IUnitOfWork'.	AdityaBookStore	
+C:\Users\W0835715\Source\Repos\AdityaBookStore_0835715\AdityaBookStore\Startup.cs	40	Active
+
+
+but icant able to fiqure out the error then after words i did the using system thing in the this line by reviewing the lec slides....
+
+Add updated the line with this code :       services.AddScoped<AdityaBooks.DataAccess.Repository.UnitOfWork, UnitOfWork>();
+
+And now we have no error We are Happy Agian.....
+
+Time : 0704
+And now we will push Again third time a charm lets goooo Andrewwwwwwwwww............
