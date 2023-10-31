@@ -139,3 +139,76 @@ Time : 0441
 
 
 After receving -1 Mark for readme This time we will start the readme first and push it....
+
+
+Changed the AppSetting.json File and in the LocaDb = Named the AdityaBookStore
+ After that in the proper project add this migration code to create the migration
+
+ --add-migration AddDefaultIdentityMigration
+
+ Updated the database 
+
+PM> update-database
+Build started...
+Build succeeded.
+Done.
+
+Database Has been Created and also Checked on the SQL server Object Explorer
+there is table i can see and also runned my project again and everything is looking good as it suppose to look 
+
+
+Created the New Models called the Category.cs and also did the migration of this Class 
+
+here is the code 
+
+Done.
+PM> add-migration AddCategoryToDB
+Build started...
+Build succeeded.
+To undo this action, use Remove-Migration.
+PM> 
+
+Time : 0518
+
+In the Models Prject add the new Class Category.cs
+
+in which we add the content as follows 
+
+  public class Category
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Display(Name ="Category Name")]
+        [Required]
+        [MaxLength(50)]
+        public String Name { get; set; }
+    }
+
+    and then we did the ApplicationDbContext.cs file and added the nesseacry Using System and the code line for category 
+
+           public DbSet<Category> Categories { get; set; }
+
+
+           And then we checked our Sql SOE thing and there we can see the table after doing the migration-2
+
+           PM> add-migration AddCategoryToDB
+Build started...
+Build succeeded.
+The name 'AddCategoryToDB' is used by an existing migration.
+PM> add-migration AddCategoryToDB-2
+Build started...
+Build succeeded.
+To undo this action, use Remove-Migration.
+PM> update-database
+Build started...
+Build succeeded.
+Done.
+PM> 
+ and then we also have to Update the Database otherwise we can't able to see the category table in the Sql Soe
+
+And Now At the Time : 0522
+
+We Will push this 2.1 Migration into the GitHub 
+
+
