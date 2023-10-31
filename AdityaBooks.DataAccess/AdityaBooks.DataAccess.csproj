@@ -11,6 +11,17 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.2" />
   </ItemGroup>
+	
+	<ItemGroup></ItemGroup>
+		
+	
+		
+	  <ItemGroup>
+	  <Folder Include="Data\"/>
+    <Folder Include="Repository\IRepository\" />
+  </ItemGroup>
+	
+	
   <ItemGroup>
     <ProjectReference Include="..\AdityaBooks.Models\AdityaBooks.Models.csproj" />
     <ProjectReference Include="..\AdityaBooks.Utility\AdityaBooks.Utility.csproj" />
