@@ -1,5 +1,6 @@
 ﻿
 using AdityaBooks.DataAccess.Repository.IRepository;
+using AdityaBooks.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,21 @@ namespace AdityaBookStore.Areas.Admin.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult Upsert(int? id)
+        {
+            Category category = new Category();
+            if (id == null)
+            {
+                return View(category);
+            }
+
+            category = _unitOfWork.Category.Get(id.GetValueOrDefault());
+            if (category == null)
+            {
+                return NotFound(category);
+            }
+            return View(category);
         }
 
         #region API CALLS

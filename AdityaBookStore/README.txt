@@ -515,3 +515,10 @@ And now we will push Again third time a charm lets goooo Andrewwwwwwwwww........
 
 time 0807
 time 0745
+
+
+
+Time 0831
+
+Did till Upsert View 
+Saddddddddd
