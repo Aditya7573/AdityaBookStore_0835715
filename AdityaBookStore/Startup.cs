@@ -8,13 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using AdityaBooks.DataAccess.Repository;
 using AdityaBooks.DataAccess.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Domain.Uow;
+using IUnitOfWork = AdityaBooks.DataAccess.Repository.IRepository.IUnitOfWork;
+using AdityaBooks.DataAccess.Repository;
 
 namespace AdityaBookStore
 {
@@ -37,7 +38,7 @@ namespace AdityaBookStore
 
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddScoped<AdityaBooks.DataAccess.Repository.UnitOfWork, UnitOfWork>();
+             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
         }
 
