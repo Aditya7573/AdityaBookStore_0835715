@@ -25,6 +25,8 @@ namespace AdityaBooks.DataAccess.Repository
 
         public ISP_Call SP_Call { get; private set; }
 
+        public object CoverType => throw new NotImplementedException();
+
         public void Dispose()
         {
             _db.Dispose();

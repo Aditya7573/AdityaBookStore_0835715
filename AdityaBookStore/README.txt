@@ -512,13 +512,147 @@ And now we have no error We are Happy Agian.....
 
 Time : 0704
 And now we will push Again third time a charm lets goooo Andrewwwwwwwwww............
-
-time 0807
 time 0745
 
+Now we will start the 2.3 Category Crud
+ in this we will add the in Adminin the Controller the New Add Controller named CategoryController.cs
+  We add the NEssercy using statments in them  and match the full code with sir file and now we will add new thing 
 
+  In the View add the new Folder Category and in it add the new Razor View for index.cshtml and then copy pasted the code from the sir files 
+
+  and runned the code  By the localhost...../Admin/Category
+
+  in the views>shared>_layout.cshtml 
+
+  we will update the command so that i dont have to use the typing in the url everytie and we add the Category in the drop down item list and it working good 
+
+time 0807
+
+In wwwroot /js We created the new file Called Category.js and added the code that sir provided and the in the index.cshtml we added this code to linkthem both and now we have the code r
+running and how it suppose to look 
+
+@section Scripts{ 
+
+<script src="~/js/category.js"></script>
+}
+
+and after that the code was running good but instantlly i got back to code and it showed mt=e the sql.server excepetion 
+After that i reliesed i have to update-database to let server know whats happeing 
+
+in the CategoryController.cs we added the IAction Result for the Upsert vIew 
 
 Time 0831
 
 Did till Upsert View 
 Saddddddddd
+
+
+11/1/2023
+time0410
+
+Hello Sir We are back again lets see where we left off and we will countinue fro there we did till the upsert view now we will add the new razor view forin the views > shared name _CreateAndBackToList 
+
+Did the scaffholding and working good 
+
+
+and now we type some codein the that creted folder and we will crete the buttons Submit back to list and similarly we 
+will add a new _EditAndBackTolistButton
+and we addeed this code in that 
+
+@model int
+<div class="row">
+    <div class="col">
+        <button type="submit" class="btn btn-primary form-control" asp-route-id="@Model">Update</button>
+    </div>
+    <div class="col">
+        <a asp-action="Index" class="btn btn-success form-control">Back to list</a>
+    </div>
+</div>
+
+Didnt forget the @model int 
+
+And in the Upsert.cshtml we add the @model for it and now in the Index.cshtml we add some code such as 
+  @if (Model.Id != 0)
+                       {
+                    <partial name="_EditAndBackToListButton" model="Model.Id" /> }
+                      else
+                       {
+                       <partial name="_CreateAndBackToListButton" />}
+                           </div>
+                        </div>
+                    </div>
+                </div>  and in
+
+                the index.cshtml we added the Asp-Action for Upsert runned the code 
+
+Time 0623
+
+Runned the code and it working correctly how it suppose to 
+we are almost at the end hurrryyyyyyy
+
+We use this url: local...../Admin/Category/Upsert
+
+Change the tilte to the Edit Category
+
+Now we created the the post method in the Upsert and didd to many thing with change we removed some save Commands from somne where and we add this command in some other palcsss
+
+And in the Catergory Colloer We will Add the Code For the Delete is this :
+   public IActionResult Delete(int id)
+        {
+            var objFromDb = _unitOfWork.Category.Get(id);
+            if (objFromDb == null)
+            {
+                return Json(new { success = true, message = "Erroe while Deleting" });
+            }
+            _unitOfWork.Category.Remove(objFromDb);
+            _unitOfWork.Save();
+            return Json(new { success = true, message = "Delete Successful" });
+        }
+
+        Time 0813
+
+        and then we will add this line off thwe code '
+        In the Category.js
+
+        <a onclick=Delete("/Admin/Category/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer">
+                       <i class= "fas fa-trash-alt"></i>&nbsp;   and affter that 
+                       we will added below that this code which provided by the sir but i have to write it manually because we cant copy and paste 
+
+
+
+function Delete(url) {
+    swal({
+        title: "Are you sure you want to delete?",
+        text: "You will not be able to restore the data!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+    }).then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                success: function (data) {
+                    if (data.success) {
+                        toastr.success(data.message);
+                        dataTable.ajax.reload();
+                    }
+                    else {
+                        toastr.error(data.message);
+                    }
+                }
+            });
+        }
+    });
+}   
+
+
+And finally the moment of truth we will run the code at the ti e of 0820 and 
+
+
+Sucessfulllyyyyyyyyyy runned 
+
+We are done with the Assignment with Complete README at the Time of 
+
+******    DATE: 11/1/2023 ******************
+****  Time : 0821 ************
