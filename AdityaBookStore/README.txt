@@ -1,3 +1,6 @@
+
+
+
 Date: 27 October 2023
 Time 1023
 
@@ -656,3 +659,95 @@ We are done with the Assignment with Complete README at the Time of
 
 ******    DATE: 11/1/2023 ******************
 ****  Time : 0821 ************
+
+
+
+
+****************************************************
+
+Assignment - 2 Part THREE
+
+****************************************************
+
+Date 15 October 2023
+Time : 0534
+3.1 CoverType Crud 
+
+Started the Assignment 2 part three
+First we will create the CoverType.cs In the Models Folder and We will add the nesseacrry class to it 
+Which is ID and Name 
+It will be same as the Category File and we will also addd the requiered Using statments 
+
+now its time :5:50
+
+Created the CoverTypeRepository.cs in Repository Folder 
+ i did the Same coding as the Category Repository one just changed the name where it says the Category to Covertype 
+
+ Same Goes with the ICoverTypeRepository 
+ Did that Coding Also 
+ 
+ Everything looking good till now 
+
+ Add the Covertype Code in UnitofWork and iUnitOfWork 
+
+Did really carefully did not want to mess up inthe typo 
+
+and after that we also add the Database Code in the ApplicationContextDb
+
+
+
+Time : 0622
+Added the Migration and updated the database : PM> add-migration AddCoverTypeToDb
+
+Also updated the Dataabse 
+
+-Update-Databse 
+
+Now We will perfom CRUD opreations 
+
+In the View Folder We will go to Shared in _layout.cshtml
+
+And add the Nav link in the DropDown Menu 
+
+Created the CoverType Controller Where there was a Category Controller and Did All the Action Method in it 
+it was hard but did it with the help of CategoryController.cs
+
+Now We will add the View similar to Category in the Index.cshtml and Upsert.cshtml 
+And Also Linked with The javaScript File 
+
+and Created the javascript.js 
+
+Checked the Code and now it all running good and perfect.
+
+Now we will do the Products 
+
+Add the Product Model in it 
+Add the Code shown in the pptx
+
+and also Updated the AppliconContectDb.cs
+ Did the Miogration 
+
+
+added the product Class and Also did the Migration 
+
+
+                                             Time:6:40
+                                             PM> add-migration AddproductToDb
+
+
+Validation to product 
+
+
+                                    Time : 6:45
+                                    Migration: PM> add-migration AddValidationToProduct
+
+
+Added the ProductRepositoy.cs and the Similar code as the Category nad CoverType and also did the IPRoductRepository 
+
+Time:7:03
+
+then we Did the UnitOFwork And i unt Of Work just added the 2 to3 line of code in both pretty simple 
+
+Bulid and checked of any errors there were no error 
+
+

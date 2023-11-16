@@ -10,8 +10,10 @@ namespace AdityaBooks.DataAccess.Repository.IRepository
     {
         ICategoryRepository Category { get; }
         ISP_Call SP_Call { get; }
-        object CoverType { get; }
+        ICoverTypeRepository CoverType { get; }
 
+        IProductRepository Product { get; }
+       
         void Save();
     }
 }
