@@ -1,7 +1,7 @@
 Name: Aditya Suthar
-Project :-  Assignemnt -2 Part-3
-Updated Date : 15/11/23
-Time Started : 0534
+Project :-  Assignemnt -2 Part-4
+Updated Date : 2023/11/21
+Time Started : 0316
 
 ************************
 Assignment-2 Part One 
@@ -467,7 +467,7 @@ Bulid and checked of any errors there were no error
                                                                    Assignemnt-2 part 3 section-2 
 
                             ****************************************************************************************************
-
+Date:2023/11/16
 Time 2:30PM
 
 So were we left is we need to start the Section 2 today and aleast hope we will complete this today 
@@ -494,6 +494,7 @@ Commented the Upsert Post
 
 Modifed my API All in the GetAll Method and Mentioned the Category and coverType
 
+Date:2023/11/16
 time:3:45Pm
 
 We will create the Add a new view From the ProductController.cs in the Index and right Clicked on it then we will Add the Razore view And select the path for it that will be to the 
@@ -578,9 +579,65 @@ Time: 4:27PM
 
  Everything is done PRoperly incluidng the Readme 
 
+Date : 2023/11/16
 Time: 5:42PM
 
 Assignment is Completed 
 
 Hurryyyyyyyyyy!
 
+             **********************************************************    DATE 2023/11/21  **********************************************************
+
+                  ********************************************************** Time : 0316  **********************************************************
+
+                                                                        Assignment - 2 Part Four
+
+ ****************************************************************************************************************************************************************
+
+Date 2023 November 21st
+Time : 0316
+
+
+Hello Sir, here we are again in the last part of the assignment right now my assignment is working completely with the product is shown in the DATABASE WITH THe enties are also showned in the table successfully without any
+error 
+
+So thats a good thing 
+
+Time3:30
+
+hello again now we will look the full code of the sir provided Github a=link and figure it out how to add the the image and all in the home of mine it should be near homecontroller but we will see from 
+here code lets go and check it 
+
+Checked the code and looked at it and also checked evert=yother thing so that i am not missing anything in the end we checked the homecontrollers index file need be edited which i did 
+and i n the View Index.cshtml also need to be changed which we will do it now 
+
+Added that full code changed the requiered statmenets and removed the errorss in it and now i think i am ready to see the image but let me add the image in the last folder  we created in the www folder in the
+
+We downloded the image from the internet and added in that folder 
+
+now we will run it 
+
+but we got the exception 
+ let me check the code again 
+
+ Time : 4:15
+
+ GOT THE error 
+ thats not kind off an error its just i am missing bit of a chuck code in the ProductController.cs file 
+so we will add that 
+
+Time : 4:34
+
+Added the code and removed the error and during this time also found another file which is upsert.cshtml we need to add the imageURl
+
+So we added the Productcontroller.cs / Upsert.cs
+
+So now we will try to add again and it 
+
+Date: 2023-11-21
+time : 5:06
+
+Lets check it and we got what we wannted in the first place and now i am happy and we will push this thing to github 
+
+Now we will attand the Modays lecture and check it if andwer needs anyother thing than this if he need then we will come back on Monday 
+Thank you 
